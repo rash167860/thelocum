@@ -1,0 +1,60 @@
+{% extends "hospital/base_hospital.html" %}
+
+
+{% block content %}
+<h2>Upload Verified Documents</h2>
+<p>Upload important documents to increase trust with doctors.</p>
+
+<form method="POST" action="{{ url_for('upload_document') }}" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="document_type">Document Type *</label>
+        <select name="document_type" id="document_type" required>
+            <option value="">Select Type</option>
+            <option>Registration Certificate</option>
+            <option>NABH Accreditation</option>
+            <option>NABL Accreditation</option>
+            <option>GST Certificate</option>
+            <option>Insurance/Tie-up Documents</option>
+            <option>Other</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="document_file">Upload File *</label>
+        <input type="file" name="document_file" id="document_file" accept=".pdf,.jpg,.jpeg,.png" required>
+    </div>
+
+    <button type="submit" class="btn-large">Upload Document</button>
+</form>
+
+<h2 style="margin-top: 4rem;">Uploaded Documents</h2>
+
+{% if current_user.documents %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Document Type</th>
+            <th>File</th>
+            <th>Uploaded On</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for doc in current_user.documents %}
+        <tr>
+            <td>{{ doc.document_type }}</td>
+            <td><a href="{{ url_for('view_document', doc_id=doc.id, user_type='hospital') }}" target="_blank">View / Download</a></td>
+            <td>{{ doc.uploaded_at.strftime('%d %b %Y') }}</td>
+            <td>
+                <span style="padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; background-color: {% if doc.status == 'Verified' %}#d4edda; color: #155724;{% else %}#fff3cd; color: #856404;{% endif %}">
+                    {{ doc.status }}
+                </span>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No documents uploaded yet.</p>
+{% endif %}
+{% endblock %}

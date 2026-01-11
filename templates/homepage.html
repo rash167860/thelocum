@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheLocum.in - Doctors On Demand | Fill Shifts in Hours</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo-container">
+                    <img src="{{ url_for('static', filename='logo.png') }}" alt="TheLocum.in Logo" class="logo">
+                    <span class="logo-text">thelocum.in</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#how-it-works">How it Works</a>
+                    <a href="#faqs">FAQs</a>
+                    <a href="{{ url_for('login') }}" class="btn-contact">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">Trusted by 500+ Healthcare Professionals</div>
+                <h1 class="hero-title">Pursuing excellence in healthcare</h1>
+                <h2 class="hero-subtitle">Doctors On Demand — Fill Shifts in Hours</h2>
+                <p class="hero-description">
+                    thelocum.in connects verified locum doctors, nurses, and allied staff with hospitals and clinics across India.
+                </p>
+                <div class="hero-features">
+                    <div class="hero-feature-item">
+                        <span class="hero-feature-icon">⚡</span>
+                        <span>Fast Matching</span>
+                    </div>
+                    <div class="hero-feature-item">
+                        <span class="hero-feature-icon">✓</span>
+                        <span>Verified Credentials</span>
+                    </div>
+                    <div class="hero-feature-item">
+                        <span class="hero-feature-icon">🔒</span>
+                        <span>Secure Payments</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="{{ url_for('register_doctor') }}" class="btn btn-primary btn-arrow">Join as Doctor</a>
+                    <a href="{{ url_for('register_hospital') }}" class="btn btn-secondary btn-arrow">Join as Hospital</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Active Professionals</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏥</div>
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Partner Hospitals</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Verified Profiles</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-number">< 24hrs</div>
+                    <div class="stat-label">Average Fill Time</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">🔍</div>
+                    </div>
+                    <h3>Verified Profiles</h3>
+                    <p>Medical council checks & document verification for complete trust and safety.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">📍</div>
+                    </div>
+                    <h3>Location Matching</h3>
+                    <p>Find professionals nearby using intelligent radius filters for faster connections.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">💳</div>
+                    </div>
+                    <h3>Secure Payments</h3>
+                    <p>Supports Paytm, Razorpay & cash record management with complete transparency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How it works</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">📝</div>
+                    <h3>Post Shift</h3>
+                    <p>Hospital posts shift with date, specialty & pay. Simple and quick process.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">🔔</div>
+                    <h3>Match</h3>
+                    <p>Doctors nearby receive alerts & apply instantly. Smart matching algorithm.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">✅</div>
+                    <h3>Confirm & Pay</h3>
+                    <p>Hospital confirms and pays via preferred secure method. Fast and reliable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Doctors Section -->
+    <section id="join-doctor" class="for-doctors">
+        <div class="container">
+            <div class="section-content">
+                <div class="content-text">
+                    <h2>For Doctors & Healthcare Staff</h2>
+                    <p class="lead">Onboard quickly, pick shifts that fit your schedule, and get paid securely.</p>
+                    <p>Create a verified profile, upload documents, and receive shift alerts near you.</p>
+                    <h3 class="subtitle">Steps to Join</h3>
+                    <ul class="steps-list">
+                        <li>Register → Verify documents → Get verified badge</li>
+                        <li>Set availability & preferred locations</li>
+                        <li>Apply to shifts & get instant notifications</li>
+                    </ul>
+                    <a href="{{ url_for('register_doctor') }}" class="btn btn-primary">Create Profile</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Hospitals Section -->
+    <section id="join-hospital" class="for-hospitals">
+        <div class="container">
+            <div class="section-content">
+                <div class="content-text">
+                    <h2>For Hospitals & Clinics</h2>
+                    <p class="lead">Post shifts, view verified profiles, and manage bookings & payments — all in one place.</p>
+                    <p>Reduce last-minute staffing stress with our fast matching algorithm.</p>
+                    <h3 class="subtitle">Benefits</h3>
+                    <ul class="benefits-list">
+                        <li>✓ Verified professionals & medical-council document checks</li>
+                        <li>✓ Flexible billing & record-keeping</li>
+                        <li>✓ Emergency coverage within hours</li>
+                    </ul>
+                    <a href="{{ url_for('register_hospital') }}" class="btn btn-secondary">POST FIRST SHIFT</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Facts Section -->
+    <section class="quick-facts">
+        <div class="container">
+            <div class="facts-content">
+                <div class="fact-item">
+                    <h3>Users</h3>
+                    <p>Hospitals, Doctors, Nurses, Technicians</p>
+                </div>
+                <div class="fact-item">
+                    <h3>Contact</h3>
+                    <p>+91 9838665578</p>
+                </div>
+                <div class="fact-item">
+                    <a href="#contact" class="btn btn-outline">CONTACT US</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section id="faqs" class="faqs">
+        <div class="container">
+            <h2 class="section-title">FAQs</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>How fast can I get a doctor?</h3>
+                    <p>Most shifts are filled within hours based on location and availability.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How are doctors verified?</h3>
+                    <p>We check medical council registration, certifications, and ID documents.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What specialties are available?</h3>
+                    <p>General physicians, emergency doctors, anesthetists, surgeons, nurses & more.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How does payment work?</h3>
+                    <p>Hospitals can pay via Paytm, Razorpay or maintain secured cash records.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Contact</h2>
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <span>Phone: <a href="tel:+919838665578">+91 9838665578</a></span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">✉️</span>
+                        <span>Email: <a href="mailto:indilocum@gmail.com">indilocum@gmail.com</a></span>
+                    </div>
+                    <p class="contact-note">Have questions or need help? Send us a message and we will get back during business hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2>About thelocum.in</h2>
+                <p>thelocum.in is a digital staffing & locum management platform that enables hospitals, clinics and diagnostic centres to post shifts, review verified professional profiles, and get fast coverage for last-minute staffing needs.</p>
+                <h3>Why choose us</h3>
+                <ul class="why-choose-list">
+                    <li>✓ Verified credentials & medical council registration checks</li>
+                    <li>✓ Flexible shifts: hourly, daily or monthly</li>
+                    <li>✓ Integrated payment options (Paytm, Razorpay, Cash records)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="{{ url_for('static', filename='logo.png') }}" alt="TheLocum.in Logo" class="logo-small">
+                    <span>thelocum.in</span>
+                </div>
+                <p class="footer-tagline">Pursuing excellence in healthcare</p>
+                <p class="footer-copyright">&copy; 2024 thelocum.in. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

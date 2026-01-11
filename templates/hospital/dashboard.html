@@ -1,0 +1,55 @@
+{% extends "hospital/base_hospital.html" %}
+
+
+{% block content %}
+<div class="grid">
+    <div class="card">
+        <h3>Total Shifts Posted</h3>
+        <p>{{ current_user.shifts|length }}</p>
+    </div>
+    <div class="card">
+        <h3>Open Shifts</h3>
+        <p>{{ current_user.shifts|selectattr('status', 'equalto', 'Open')|list|length }}</p>
+    </div>
+    <div class="card">
+        <h3>Filled Shifts</h3>
+        <p>{{ current_user.shifts|selectattr('status', 'equalto', 'Filled')|list|length }}</p>
+    </div>
+    <div class="card">
+        <h3>Applications Received</h3>
+        <p>0</p>
+    </div>
+</div>
+
+<h2 style="margin-top: 3rem;">Recent Shifts</h2>
+{% if current_user.shifts %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Specialty</th>
+            <th>Pay</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for shift in current_user.shifts|reverse|slice(5) %}
+        <tr>
+            <td>{{ shift.title }}{% if shift.is_urgent %} (Urgent){% endif %}</td>
+            <td>{{ shift.shift_date.strftime('%d %b %Y') if shift.shift_date else 'N/A' }}</td>
+            <td>{{ shift.specialty or 'N/A' }}</td>
+            <td>₹{{ shift.pay_rate }} {% if shift.pay_type == 'Hourly' %}/hr{% endif %}</td>
+            <td>{{ shift.status }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No shifts posted yet. <a href="{{ url_for('create_shift') }}">Post your first shift</a></p>
+{% endif %}
+
+<div style="text-align: center; margin-top: 4rem;">
+    <a href="{{ url_for('create_shift') }}" class="btn-large">Post New Shift</a>
+</div>
+{% endblock %}

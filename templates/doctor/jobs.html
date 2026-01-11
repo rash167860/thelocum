@@ -1,0 +1,56 @@
+{% extends "doctor/base_doctor.html" %}
+
+{% block content %}
+<h2>Available Jobs</h2>
+
+<!-- Filters -->
+<div style="margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+    <div>
+        <label for="filter-specialty">Specialty:</label>
+        <select id="filter-specialty">
+            <option value="">All Specialties</option>
+            <option>General Medicine</option>
+            <option>Anesthesia</option>
+            <option>Surgery</option>
+            <option>Pediatrics</option>
+            <option>ICU/CCU</option>
+            <option>Other</option>
+        </select>
+    </div>
+    <div>
+        <label for="filter-pay">Min Pay (₹):</label>
+        <input type="number" id="filter-pay" placeholder="e.g., 3000">
+    </div>
+</div>
+
+{% if shifts %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Hospital</th>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Specialty</th>
+            <th>Pay</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for shift in shifts %}
+        <tr class="job-row" data-specialty="{{ shift.specialty or ''|lower }}" data-pay="{{ shift.pay_rate }}">
+            <td>{{ shift.hospital.hospital_name }}</td>
+            <td>{{ shift.title }}{% if shift.is_urgent %} <span style="color: red; font-weight: bold;"> (Urgent)</span>{% endif %}</td>
+            <td>{{ shift.shift_date.strftime('%d %b %Y') if shift.shift_date else 'N/A' }}</td>
+            <td>{{ shift.specialty or 'N/A' }}</td>
+            <td>₹{{ shift.pay_rate }} {% if shift.pay_type == 'Hourly' %}/hr{% endif %}</td>
+            <td>
+                <button class="btn-primary apply-btn" data-shift-id="{{ shift.id }}">Apply Now</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No open jobs available right now. Check back later!</p>
+{% endif %}
+{% endblock %}

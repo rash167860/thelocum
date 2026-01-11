@@ -1,0 +1,34 @@
+{% extends "doctor/base_doctor.html" %}
+
+{% block content %}
+<h2>Application History</h2>
+
+{% if current_user.applications %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Shift Title</th>
+            <th>Hospital</th>
+            <th>Applied On</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for app in current_user.applications|reverse %}
+        <tr>
+            <td>{{ app.shift.title }}</td>
+            <td>{{ app.shift.hospital.hospital_name }}</td>
+            <td>{{ app.applied_at.strftime('%d %b %Y') }}</td>
+            <td>
+                <span style="padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; background-color: {% if app.status == 'Accepted' %}#d4edda; color: #155724{% elif app.status == 'Rejected' %}#f8d7da; color: #721c24{% else %}#fff3cd; color: #856404{% endif %}">
+                    {{ app.status }}
+                </span>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>You haven't applied to any jobs yet. <a href="{{ url_for('doctor_jobs') }}">Browse jobs</a></p>
+{% endif %}
+{% endblock %}

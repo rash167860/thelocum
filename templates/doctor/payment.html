@@ -1,0 +1,22 @@
+{% extends "doctor/base_doctor.html" %}
+
+{% block content %}
+<h2>Payment History</h2>
+<p>View your earnings from accepted shifts.</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Shift</th>
+            <th>Hospital</th>
+            <th>Amount</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="4" style="text-align: center; color: #666;">No payments yet. Complete accepted shifts to earn!</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

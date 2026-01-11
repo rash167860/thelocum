@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Doctor Dashboard{% endblock %} - TheLocum.in</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/hospital_dashboard.css') }}"> <!-- Same CSS for consistency -->
+    <script src="{{ url_for('static', filename='js/doctor_dashboard.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="TheLocum.in Logo">
+                <span>TheLocum.in</span>
+            </div>
+            <ul>
+                <li><a href="{{ url_for('dashboard') }}" class="{{ 'active' if request.endpoint == 'dashboard' else '' }}">Dashboard</a></li>
+                <li><a href="{{ url_for('doctor_jobs') }}" class="{{ 'active' if request.endpoint == 'doctor_jobs' else '' }}">Jobs</a></li>
+                <li><a href="{{ url_for('doctor_history') }}" class="{{ 'active' if request.endpoint == 'doctor_history' else '' }}">History</a></li>
+                <li><a href="{{ url_for('doctor_payment') }}" class="{{ 'active' if request.endpoint == 'doctor_payment' else '' }}">Payment</a></li>
+                <li><a href="{{ url_for('doctor_profile') }}" class="{{ 'active' if request.endpoint == 'doctor_profile' else '' }}">Profile</a></li>
+                <li><a href="{{ url_for('doctor_documents') }}" class="{{ 'active' if request.endpoint == 'doctor_documents' else '' }}">Documents</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </aside>
+        <main class="main">
+            <h1 class="page-title"></h1>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>

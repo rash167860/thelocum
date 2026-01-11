@@ -1,0 +1,77 @@
+{% extends "hospital/base_hospital.html" %}
+
+
+{% block content %}
+<h2>Post a New Shift</h2>
+
+<form method="POST">
+    <div class="form-group">
+        <label for="title">Shift Title *</label>
+        <input type="text" name="title" id="title" required placeholder="e.g., ICU Night Duty - 25 Dec">
+    </div>
+
+    <div class="form-group">
+        <label for="specialty">Specialty *</label>
+        <select name="specialty" id="specialty" required>
+            <option value="">Select Specialty</option>
+            <option>General Medicine</option>
+            <option>Anesthesia</option>
+            <option>Surgery</option>
+            <option>Pediatrics</option>
+            <option>Emergency Medicine</option>
+            <option>ICU/CCU</option>
+            <option>Cardiology</option>
+            <option>Orthopedics</option>
+            <option>Nursing</option>
+            <option>Other</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="shift_date">Shift Date *</label>
+        <input type="date" name="shift_date" id="shift_date" required>
+    </div>
+
+    <div class="form-group">
+        <label for="start_time">Start Time *</label>
+        <input type="time" name="start_time" id="start_time" required>
+    </div>
+
+    <div class="form-group">
+        <label for="end_time">End Time *</label>
+        <input type="time" name="end_time" id="end_time" required>
+    </div>
+
+    <div class="form-group">
+        <label for="pay_rate">Pay Rate (₹) *</label>
+        <input type="number" name="pay_rate" id="pay_rate" required placeholder="e.g., 5000">
+    </div>
+
+    <div class="form-group">
+        <label for="pay_type">Pay Type *</label>
+        <select name="pay_type" id="pay_type" required>
+            <option value="Fixed">Fixed Amount</option>
+            <option value="Hourly">Per Hour</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="location_ward">Location / Ward</label>
+        <input type="text" name="location_ward" id="location_ward" placeholder="e.g., ICU Ward 3">
+    </div>
+
+    <div class="form-group">
+        <label for="requirements">Requirements / Notes</label>
+        <textarea name="requirements" id="requirements" rows="5"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>
+            <input type="checkbox" name="is_urgent">
+            Mark as Urgent
+        </label>
+    </div>
+
+    <button type="submit" class="btn-large">Post Shift</button>
+</form>
+{% endblock %}

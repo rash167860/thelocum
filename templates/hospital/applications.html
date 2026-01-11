@@ -1,0 +1,33 @@
+{% extends "hospital/base_hospital.html" %}
+
+
+{% block content %}
+<h2>Posted Shifts & Applications</h2>
+
+{% if shifts %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Shift Title</th>
+            <th>Date</th>
+            <th>Specialty</th>
+            <th>Pay</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for shift in shifts %}
+        <tr>
+            <td>{{ shift.title }}{% if shift.is_urgent %} (Urgent){% endif %}</td>
+            <td>{{ shift.shift_date.strftime('%d %b %Y') if shift.shift_date else 'N/A' }}</td>
+            <td>{{ shift.specialty or 'N/A' }}</td>
+            <td>₹{{ shift.pay_rate }} {% if shift.pay_type == 'Hourly' %}/hr{% endif %}</td>
+            <td>{{ shift.status }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No shifts posted yet. <a href="{{ url_for('create_shift') }}">Post one now</a></p>
+{% endif %}
+{% endblock %}

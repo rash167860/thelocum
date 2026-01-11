@@ -1,0 +1,64 @@
+{% extends "hospital/base_hospital.html" %}
+
+
+{% block content %}
+<h2>Update Hospital Profile</h2>
+
+<form method="POST">
+    <div class="form-group">
+        <label>Hospital Name</label>
+        <input type="text" value="{{ current_user.hospital_name }}" disabled>
+    </div>
+    <div class="form-group">
+        <label>Contact Person</label>
+        <input type="text" value="{{ current_user.contact_person }}" disabled>
+    </div>
+    <div class="form-group">
+        <label>Hospital Type</label>
+        <select name="hospital_type">
+            <option value="">Select Type</option>
+            <option {% if profile.hospital_type == 'Government' %}selected{% endif %}>Government</option>
+            <option {% if profile.hospital_type == 'Private' %}selected{% endif %}>Private</option>
+            <option {% if profile.hospital_type == 'Trust' %}selected{% endif %}>Trust</option>
+            <option {% if profile.hospital_type == 'Multi-specialty' %}selected{% endif %}>Multi-specialty</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Address</label>
+        <textarea name="address" rows="3">{{ profile.address or '' }}</textarea>
+    </div>
+    <div class="form-group">
+        <label>City</label>
+        <input type="text" name="city" value="{{ profile.city or '' }}">
+    </div>
+    <div class="form-group">
+        <label>State</label>
+        <input type="text" name="state" value="{{ profile.state or '' }}">
+    </div>
+    <div class="form-group">
+        <label>PIN Code</label>
+        <input type="text" name="pincode" value="{{ profile.pincode or '' }}">
+    </div>
+    <div class="form-group">
+        <label>Phone</label>
+        <input type="text" name="phone" value="{{ profile.phone or '' }}">
+    </div>
+    <div class="form-group">
+        <label>Alternate Phone</label>
+        <input type="text" name="alternate_phone" value="{{ profile.alternate_phone or '' }}">
+    </div>
+    <div class="form-group">
+        <label>Website</label>
+        <input type="text" name="website" value="{{ profile.website or '' }}">
+    </div>
+    <div class="form-group">
+        <label>Number of Beds</label>
+        <input type="number" name="number_of_beds" value="{{ profile.number_of_beds or '' }}">
+    </div>
+    <div class="form-group">
+        <label>About Hospital</label>
+        <textarea name="about" rows="5">{{ profile.about or '' }}</textarea>
+    </div>
+    <button type="submit" class="btn-large">Save Changes</button>
+</form>
+{% endblock %}
