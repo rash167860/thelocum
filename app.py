@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 # app.py - Final Complete Version with Encrypted Binary Storage in SQLite
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, send_file, abort
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
@@ -9,6 +12,8 @@ from utils.encryption import Encryptor
 import os
 import io
 import mimetypes
+
+
 
 def create_app():
     app = Flask(__name__)

@@ -12,7 +12,6 @@ db = SQLAlchemy()
 # ========================
 
 class DoctorUser(UserMixin, db.Model):
-    __bind_key__ = 'doctors'
     __tablename__ = 'doctors'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -36,7 +35,6 @@ class DoctorUser(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
 
 class DoctorProfile(db.Model):
-    __bind_key__ = 'doctors'
     __tablename__ = 'doctor_profiles'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -64,7 +62,6 @@ class DoctorProfile(db.Model):
         self.address_enc = Encryptor.encrypt(value)
 
 class DoctorDocument(db.Model):
-    __bind_key__ = 'doctors'
     __tablename__ = 'doctor_documents'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -75,7 +72,6 @@ class DoctorDocument(db.Model):
     uploaded_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 class ShiftApplication(db.Model):
-    __bind_key__ = 'doctors'
     __tablename__ = 'shift_applications'
 
     id = db.Column(db.Integer, primary_key=True)
